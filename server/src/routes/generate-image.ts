@@ -73,5 +73,6 @@ export async function generateImage(app: FastifyInstance): Promise<void> {
           text
         }
       });
-    })
+    }
+  )
 };

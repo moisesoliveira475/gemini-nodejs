@@ -3,6 +3,7 @@ import fastify from "fastify";
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import { generateText } from "./routes/generate-text";
 import { generateImage } from "./routes/generate-image";
+import { generateChat } from "./routes/generate-chat";
 
 config({encoding: "utf-8" })
 
@@ -17,3 +18,4 @@ app.setSerializerCompiler(serializerCompiler);
 
 app.register(generateText);
 app.register(generateImage);
+app.register(generateChat);

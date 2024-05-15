@@ -48,5 +48,6 @@ export async function generateText(app: FastifyInstance): Promise<void> {
           text
         }
       });
-    })
+    }
+  )
 };

@@ -1,0 +1,1 @@
+1- ulid para geração de id ou uuidv7

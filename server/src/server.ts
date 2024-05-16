@@ -2,7 +2,7 @@ import { config } from "dotenv";
 import fastify from "fastify";
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import { generateText } from "./routes/generate-text";
-import { generateImage } from "./routes/generate-image";
+import { generateTextWithImage } from "./routes/generate-text-with-image";
 import { generateChat } from "./routes/generate-chat";
 
 config({encoding: "utf-8" })
@@ -17,5 +17,5 @@ app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
 app.register(generateText);
-app.register(generateImage);
+app.register(generateTextWithImage);
 app.register(generateChat);

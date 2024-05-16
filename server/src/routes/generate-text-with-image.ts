@@ -3,8 +3,9 @@ import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import { validateToken } from "../utils/validateToken";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleAIFileManager } from "@google/generative-ai/files"; 
 
-export async function generateImage(app: FastifyInstance): Promise<void> {
+export async function generateTextWithImage(app: FastifyInstance): Promise<void> {
   app
     .withTypeProvider<ZodTypeProvider>()
     .post("/api/v1/generate-image", {
@@ -43,9 +44,12 @@ export async function generateImage(app: FastifyInstance): Promise<void> {
       const { authorization } = request.headers;
       const { imageObj, promptObj, modelObj } = request.body;
 
+      
       const token = validateToken(authorization);
-
-      const genAI = new GoogleGenerativeAI(token)
+      
+      const genAI = new GoogleGenerativeAI(token);
+      
+      const fileManager = new GoogleAIFileManager(token);
 
       function fileToGenerativePart(image: string, mimeType: string) {
         return {

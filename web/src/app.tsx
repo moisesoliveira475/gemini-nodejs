@@ -1,14 +1,18 @@
-import { ChatContainer } from "./components/chat-container";
-import { Input } from "./components/input";
-import { NavBar } from "./components/nav-bar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/home";
+import { Login } from "./pages/login";
+import { AuthContextProvider } from "./context/auth-context";
+
 
 export function App() {
   return (
-    <div className="mx-auto flex flex-row">
-      <NavBar className="bg-zinc-900"/>
-      <ChatContainer className="bg-zinc-900">
-        <Input className=""/>
-      </ChatContainer>
-    </div>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </AuthContextProvider>
+    </BrowserRouter>
   )
 };
